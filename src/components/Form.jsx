@@ -1,11 +1,29 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { baseURL, config } from "../services";
 
 function Form(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState(1);
+
+  const params = useParams();
+
+  useEffect(() => {
+    //if there's an id in the url AND snacks is longer than 0
+    if (params.id && props.snacks.length > 0) {
+      //find the snack where its id matches the id from params and save it in a variable called snackToEdit
+      const snackToEdit = props.snacks.find((snack) => snack.id === params.id);
+      //if the snack we were looking for exists
+      if (snackToEdit) {
+        //populate the states(???)
+        setName(snackToEdit.fields.name);
+        setDescription(snackToEdit.fields.description);
+        setRating(snackToEdit.fields.rating);
+      }
+    }
+  }, [params.id, props.snacks]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,8 +32,13 @@ function Form(props) {
       description,
       rating,
     };
-    await axios.post(baseURL, { fields: newSnack }, config);
-    props.setToggleFetch((curr) => !curr);
+    if (params.id) {
+      const snackURL = `${baseURL}/${params.id}`;
+      await axios.put(snackURL, { fields: newSnack }, config);
+    } else {
+      await axios.post(baseURL, { fields: newSnack }, config);
+      props.setToggleFetch((curr) => !curr);
+    }
   };
 
   return (

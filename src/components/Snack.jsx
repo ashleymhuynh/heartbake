@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { baseURL, config } from "../services";
 
@@ -16,6 +17,9 @@ function Snack(props) {
       <p>{description}</p>
       <p>{rating}</p>
       <button onClick={healedHeart}>Healed Heart❤️‍🩹</button>
+      <Link to={`/edit/${props.snack.id}`}>
+        <button>Edit Snack</button>
+      </Link>
     </article>
   );
 }
