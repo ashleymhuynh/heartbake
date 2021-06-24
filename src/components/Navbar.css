@@ -1,0 +1,11 @@
+h1 {
+  color: rgb(168, 64, 64);
+}
+#homelink {
+  display: inline-block;
+  padding: 15px;
+}
+#bake-my-heart {
+  display: inline-block;
+  padding: 15px;
+}
