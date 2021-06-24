@@ -19,7 +19,18 @@ h1 {
 
 form {
   display: flex;
-  flex-direction: ;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 15px;
+  padding: 15px;
+}
+button {
+  background-color: palevioletred;
+  color: aliceblue;
+  border: 2px solid palevioletred;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 @media screen and (max-width: 425px) {

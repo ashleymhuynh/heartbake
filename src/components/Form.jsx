@@ -73,7 +73,7 @@ function Form(props) {
         onChange={(e) => setRating(e.target.valueAsNumber)}
         required
       />
-      <button type="submit">💔🍞</button>
+      <button type="submit"> 🍞 💔 </button>
     </form>
   );
 }
