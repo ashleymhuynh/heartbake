@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Snack from "./components/Snack";
+import Form from "./components/Form";
 import { baseURL, config } from "./services";
 import "./App.css";
 
@@ -23,12 +24,16 @@ function App() {
       <Route exact path="/">
         <main>
           {snacks.map((snack) => (
-            <Snack snack={snack} setToggleFetch={setToggleFetch} />
+            <Snack
+              key={snack.id}
+              snack={snack}
+              setToggleFetch={setToggleFetch}
+            />
           ))}
         </main>
       </Route>
       <Route path="/new">
-        <h2>Bake My Heart </h2>
+        <Form setToggleFetch={setToggleFetch} />
       </Route>
       <Route path="/edit/:id">
         <h2>Edit Snack</h2>
