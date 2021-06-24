@@ -9,7 +9,7 @@ function Navbar() {
         Heartbake
       </Link>
       <Link to="/new" id="bake-my-heart">
-        🍞Bake My Heart❤️‍🩹
+        Bake My Heart❤️‍🩹
       </Link>
     </nav>
   );
