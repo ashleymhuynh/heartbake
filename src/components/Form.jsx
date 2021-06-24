@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { baseURL, config } from "../services";
 
 function Form(props) {
@@ -9,6 +9,7 @@ function Form(props) {
   const [rating, setRating] = useState(1);
 
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     //if there's an id in the url AND snacks is longer than 0
@@ -39,6 +40,9 @@ function Form(props) {
       await axios.post(baseURL, { fields: newSnack }, config);
       props.setToggleFetch((curr) => !curr);
     }
+    setTimeout(() => {
+      history.push("/");
+    }, 1000);
   };
 
   return (
