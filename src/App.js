@@ -20,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>HeartBake</h1>
       <Navbar />
       <Route exact path="/">
         <main>
